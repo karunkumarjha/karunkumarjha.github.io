@@ -162,7 +162,7 @@ body{
 }
 
 .items li img{
-	width: 50%;
+	width: 100%;
 	-webkit-transition: all 0.2s linear, 1s;
 	-moz-transition: all 0.2s linear, 1s;
 	-o-transition: all 0.2s linear, 1s;
@@ -203,7 +203,7 @@ body{
 	-transition: all 0.2s linear, 0.2s;
 }
 .items .imageOverlay{
-	width: 51%;
+	width: 100%;
 	height: 100%;
 	background-color: rgba(0, 0, 0, 0.5);
 	position: absolute;
@@ -222,7 +222,7 @@ body{
 }
 .items .projectLink{
 	float: right;
-	right: -150px;
+	right: -200px;
 }
 
 .items .item:hover .openButton{
@@ -230,7 +230,7 @@ body{
 }
 
 .items .item:hover .projectLink{
-	right: 90px;
+	right: 25px;
 }
 
 .items .item:hover img{
