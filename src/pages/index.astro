@@ -1,10 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-
-// Calculate days until March 31st, 2026
-const endDate = new Date('2026-03-31');
-const today = new Date();
-const daysLeft = Math.ceil((endDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
 ---
 
 <BaseLayout title="Home">
@@ -140,12 +135,6 @@ const daysLeft = Math.ceil((endDate.getTime() - today.getTime()) / (1000 * 60 * 
           <span class="terminal-output">Systems: <span class="status-green">Optimized</span> | Portfolio: <span class="status-green">Bullish</span> | Stars: <span class="status-green">Aligned</span> | Verse: <span class="status-green">Flowing</span></span>
         </div>
 
-        <!-- Countdown Ticker -->
-        <div class="countdown-ticker">
-          <span class="ticker-label">Skill Upgradation Break:</span>
-          <span class="ticker-value">{daysLeft} days remaining</span>
-          <span class="ticker-end">until March 31st</span>
-        </div>
       </section>
     </main>
   </div>
