@@ -941,6 +941,15 @@ a:hover {
     gap: 4px;
   }
   
+  .status-item {
+    display: flex;
+  }
+  
+  .status-label {
+    display: inline-block;
+    width: 75px;
+  }
+  
   .status-divider {
     display: none;
   }
