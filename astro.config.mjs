@@ -10,7 +10,7 @@ import { defineConfig } from 'astro/config';
 
 export default defineConfig({
   site: 'https://karunkumarjha.github.io',
-  base: '/portfolio-website',
+  base: '/portfolio-website/',
   output: 'static',
   build: {
     assets: 'assets'

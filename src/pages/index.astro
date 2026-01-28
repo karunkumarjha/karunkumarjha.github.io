@@ -1,11 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout title="Home">
   <section class="hero">
     <img 
-      src={`${import.meta.env.BASE_URL}images/profile.jpeg`}
+      src={`${base}images/profile.jpeg`}
       alt="Karun" 
       class="profile-image"
     />
