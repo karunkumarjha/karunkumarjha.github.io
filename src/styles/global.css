@@ -512,6 +512,7 @@ a:hover {
   color: var(--color-text-muted);
   font-size: 1.3rem;
   font-weight: 500;
+  margin-bottom: 2px;
 }
 
 .intro .tagline-note {
@@ -519,7 +520,7 @@ a:hover {
   font-size: 0.8rem;
   font-style: italic;
   opacity: 0.7;
-  margin-top: 4px;
+  margin-top: 0;
 }
 
 .about-section {
