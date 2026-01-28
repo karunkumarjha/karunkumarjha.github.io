@@ -235,35 +235,125 @@ a:hover {
   color: var(--color-text-muted);
 }
 
-/* Home Page */
-.hero {
-  text-align: center;
-  margin-bottom: var(--spacing-xl);
-  padding: var(--spacing-lg) 0;
+/* Home Page Layout */
+.home-layout {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: var(--spacing-xl);
+  align-items: start;
+}
+
+.sidebar {
+  position: sticky;
+  top: 100px;
 }
 
 .profile-image {
   width: 180px;
   height: 180px;
-  border-radius: 50%;
+  border-radius: 16px;
   object-fit: cover;
   margin-bottom: var(--spacing-md);
   border: 4px solid white;
-  box-shadow: var(--shadow-lg), 0 0 0 4px rgba(99, 102, 241, 0.2);
+  box-shadow: var(--shadow-lg);
   transition: transform 0.3s ease;
 }
 
 .profile-image:hover {
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
 
-.hero h1 {
+.sidebar-social {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.social-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.social-btn svg {
+  flex-shrink: 0;
+}
+
+.social-btn.linkedin {
+  background: rgba(10, 102, 194, 0.1);
+  color: var(--color-linkedin);
+}
+.social-btn.linkedin:hover {
+  background: var(--color-linkedin);
+  color: white;
+}
+
+.social-btn.github {
+  background: rgba(51, 51, 51, 0.1);
+  color: var(--color-github);
+}
+.social-btn.github:hover {
+  background: var(--color-github);
+  color: white;
+}
+
+.social-btn.twitter {
+  background: rgba(29, 161, 242, 0.1);
+  color: var(--color-twitter);
+}
+.social-btn.twitter:hover {
+  background: var(--color-twitter);
+  color: white;
+}
+
+.social-btn.youtube {
+  background: rgba(255, 0, 0, 0.1);
+  color: var(--color-youtube);
+}
+.social-btn.youtube:hover {
+  background: var(--color-youtube);
+  color: white;
+}
+
+.social-btn.quora {
+  background: rgba(185, 43, 39, 0.1);
+  color: var(--color-quora);
+}
+.social-btn.quora:hover {
+  background: var(--color-quora);
+  color: white;
+}
+
+.social-btn.email {
+  background: rgba(234, 67, 53, 0.1);
+  color: var(--color-email);
+}
+.social-btn.email:hover {
+  background: var(--color-email);
+  color: white;
+}
+
+.main-section {
+  min-width: 0;
+}
+
+.intro {
+  margin-bottom: var(--spacing-lg);
+}
+
+.intro h1 {
   margin-bottom: var(--spacing-xs);
 }
 
-.hero .tagline {
+.intro .tagline {
   color: var(--color-text-muted);
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: 500;
 }
 
@@ -445,6 +535,50 @@ a:hover {
 }
 
 /* Responsive */
+@media (max-width: 768px) {
+  .home-layout {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+  
+  .sidebar {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .profile-image {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .sidebar-social {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+  
+  .social-btn {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+  
+  .social-btn span {
+    display: none;
+  }
+  
+  .social-btn {
+    padding: 10px;
+    border-radius: 10px;
+  }
+  
+  .intro {
+    text-align: center;
+  }
+}
+
 @media (max-width: 600px) {
   html {
     font-size: 16px;
@@ -468,8 +602,8 @@ a:hover {
   }
   
   .profile-image {
-    width: 140px;
-    height: 140px;
+    width: 120px;
+    height: 120px;
   }
   
   .about-section,
