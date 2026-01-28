@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const poems = await getCollection('poems');
+  return poems.map((poem) => ({
+    params: { slug: poem.slug },
+    props: { poem },
+  }));
+}
+
+const { poem } = Astro.props;
+const { Content } = await poem.render();
+---
+
+<BaseLayout title={poem.data.title} description={poem.data.description}>
+  <a href="/poems" class="back-link">← Back to Poems</a>
+  
+  <article>
+    <header class="post-header">
+      <h1>{poem.data.title}</h1>
+      <p class="post-meta">
+        {poem.data.date.toLocaleDateString('en-US', { 
+          year: 'numeric', 
+          month: 'long', 
+          day: 'numeric' 
+        })}
+      </p>
+    </header>
+    
+    <div class="post-content poem-content">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>
