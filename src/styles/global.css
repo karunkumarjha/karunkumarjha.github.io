@@ -303,6 +303,8 @@ a:hover {
 .mobile-social-btn.email {
   background: rgba(234, 67, 53, 0.1);
   color: var(--color-email);
+  grid-column: span 2;
+  justify-content: center;
 }
 
 /* Main Content */
