@@ -675,9 +675,19 @@ a:hover {
 }
 
 .terminal-output {
-  display: block;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
   margin-top: 8px;
   color: #9CA3AF;
+}
+
+.status-item {
+  white-space: nowrap;
+}
+
+.status-divider {
+  color: #4B5563;
 }
 
 .status-green {
@@ -922,8 +932,17 @@ a:hover {
   }
   
   .terminal-footer {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     padding: var(--spacing-sm);
+  }
+  
+  .terminal-output {
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .status-divider {
+    display: none;
   }
   
   .countdown-ticker {
