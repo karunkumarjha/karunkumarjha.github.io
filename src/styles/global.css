@@ -23,6 +23,7 @@
   --color-twitter: #1DA1F2;
   --color-youtube: #FF0000;
   --color-quora: #B92B27;
+  --color-leetcode: #FFA116;
   --color-email: #EA4335;
   
   --font-serif: 'Georgia', 'Times New Roman', serif;
@@ -294,6 +295,11 @@ a:hover {
   color: var(--color-quora);
 }
 
+.mobile-social-btn.leetcode {
+  background: rgba(255, 161, 22, 0.1);
+  color: var(--color-leetcode);
+}
+
 .mobile-social-btn.email {
   background: rgba(234, 67, 53, 0.1);
   color: var(--color-email);
@@ -354,6 +360,9 @@ a:hover {
 
 .social-links a.quora { color: var(--color-quora); }
 .social-links a.quora:hover { background: var(--color-quora); color: white; }
+
+.social-links a.leetcode { color: var(--color-leetcode); }
+.social-links a.leetcode:hover { background: var(--color-leetcode); color: white; }
 
 .social-links a.email { color: var(--color-email); }
 .social-links a.email:hover { background: var(--color-email); color: white; }
@@ -462,6 +471,15 @@ a:hover {
 }
 .social-btn.quora:hover {
   background: var(--color-quora);
+  color: white;
+}
+
+.social-btn.leetcode {
+  background: rgba(255, 161, 22, 0.1);
+  color: var(--color-leetcode);
+}
+.social-btn.leetcode:hover {
+  background: var(--color-leetcode);
   color: white;
 }
 
