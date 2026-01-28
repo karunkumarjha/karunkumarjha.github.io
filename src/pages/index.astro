@@ -1,5 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Calculate days until March 31st, 2026
+const endDate = new Date('2026-03-31');
+const today = new Date();
+const daysLeft = Math.ceil((endDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
 ---
 
 <BaseLayout title="Home">
@@ -79,6 +84,67 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           I build systems that work and write words that breathe—all while trying to find the perfect 
           balance between cosmic alignment and 99.9% uptime.
         </p>
+      </section>
+
+      <!-- Four Pillars Grid -->
+      <section class="pillars-section">
+        <h2>The Four Pillars</h2>
+        
+        <div class="pillars-grid">
+          <!-- Card 1: The Engineer -->
+          <a href="https://github.com/karunkumarjha" target="_blank" rel="noopener noreferrer" class="pillar-card engineer">
+            <div class="pillar-icon">[ ]</div>
+            <h3 class="pillar-headline">The Builder</h3>
+            <p class="pillar-vibe">High-scale systems and lean code.</p>
+            <p class="pillar-focus"><strong>Current Focus:</strong> Deep-diving into DDIA and Fundamentals of Data Engineering.</p>
+            <span class="pillar-cta">View GitHub →</span>
+            <span class="pillar-timestamp">Last Commit: Recently</span>
+          </a>
+
+          <!-- Card 2: The Investor -->
+          <a href="/blogs" class="pillar-card investor">
+            <div class="pillar-icon">↗</div>
+            <h3 class="pillar-headline">The Strategist</h3>
+            <p class="pillar-vibe">Compounding interest and market mechanics.</p>
+            <p class="pillar-focus"><strong>Current Focus:</strong> Long-term wealth architecture and monitoring market cycles.</p>
+            <span class="pillar-cta">Investment Philosophy →</span>
+            <span class="pillar-timestamp">Portfolio: Bullish</span>
+          </a>
+
+          <!-- Card 3: The Astrologer -->
+          <a href="/blogs" class="pillar-card astrologer">
+            <div class="pillar-icon">✦</div>
+            <h3 class="pillar-headline">The Cosmic Observer</h3>
+            <p class="pillar-vibe">Vedic patterns and Nakshatra insights.</p>
+            <p class="pillar-focus"><strong>Current Focus:</strong> Mapping the intersection of time, karma, and planetary alignment.</p>
+            <span class="pillar-cta">Explore the Patterns →</span>
+            <span class="pillar-timestamp">Stars: Aligned</span>
+          </a>
+
+          <!-- Card 4: The Poet -->
+          <a href="/poems" class="pillar-card poet">
+            <div class="pillar-icon">✎</div>
+            <h3 class="pillar-headline">The Wordsmith</h3>
+            <p class="pillar-vibe">Abstract thoughts and rhythmic verses.</p>
+            <p class="pillar-focus"><strong>Current Focus:</strong> Translating the "un-engineerable" parts of life into stanzas.</p>
+            <span class="pillar-cta">Open Poem Directory →</span>
+            <span class="pillar-timestamp">Verse: Flowing</span>
+          </a>
+        </div>
+
+        <!-- Terminal Footer -->
+        <div class="terminal-footer">
+          <span class="terminal-prompt">karun@portfolio ~ %</span>
+          <span class="terminal-command">status --all</span>
+          <span class="terminal-output">Systems: <span class="status-green">Optimized</span> | Portfolio: <span class="status-green">Bullish</span> | Stars: <span class="status-green">Aligned</span> | Verse: <span class="status-green">Flowing</span></span>
+        </div>
+
+        <!-- Countdown Ticker -->
+        <div class="countdown-ticker">
+          <span class="ticker-label">Skill Upgradation Break:</span>
+          <span class="ticker-value">{daysLeft} days remaining</span>
+          <span class="ticker-end">until March 31st</span>
+        </div>
       </section>
     </main>
   </div>
