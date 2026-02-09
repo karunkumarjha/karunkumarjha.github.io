@@ -1,27 +1,20 @@
 ---
-title: "Welcome to My Blog"
+title: "Building Data Pipelines That Don't Break at 3 AM"
 date: 2026-01-29
-description: "An introduction to my blog and what you can expect to find here."
+description: "Lessons from building resilient data pipelines — idempotency, observability, and designing for failure."
+tags: ["data-engineering", "pipelines", "best-practices"]
 ---
 
-Welcome to my blog! This is a space where I share my thoughts, ideas, and experiences on various topics that interest me.
+Welcome to my blog. This is where I write about data engineering — the real stuff. Not just tools and syntax, but the thinking behind building systems that handle data at scale.
 
-## What to Expect
+## What You'll Find Here
 
-Here, you'll find posts covering a range of subjects including:
-
-- **Technology** – Insights on software development, tools, and trends
-- **Personal Growth** – Reflections on learning and self-improvement
-- **Creative Writing** – Stories and thoughts that spark the imagination
+- **System Design** — How to think about data pipelines, batch vs streaming trade-offs, and when "good enough" is the right architecture
+- **Deep Dives** — Practical breakdowns of tools like Spark, Airflow, Kafka, and dbt
+- **Lessons Learned** — What breaks in production and how to build systems that recover gracefully
 
 ## Why I Write
 
-Writing is a powerful way to organize thoughts and share knowledge. By putting ideas into words, we not only clarify our own understanding but also create something that might help others.
+The best way to solidify understanding is to explain it. Writing forces clarity — especially when the topic is something like exactly-once semantics or slowly changing dimensions.
 
-I believe in the power of storytelling and clear communication. Whether it's a technical tutorial or a philosophical musing, every piece here is crafted with care.
-
-## Stay Connected
-
-Feel free to reach out through my social links in the footer. I'd love to hear your thoughts on any of my posts!
-
-Thanks for stopping by. I hope you enjoy what you find here.
+More posts coming soon. If you want to discuss anything, reach out via the links below.

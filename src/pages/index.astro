@@ -3,12 +3,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import SocialLinks from '../components/SocialLinks.astro';
 ---
 
-<BaseLayout title="Home">
+<BaseLayout title="Home" description="Karun Kumar Jha — Senior Data Engineer at Apollo.io. Building AI-integrated data solutions.">
   <div class="home-layout">
     <aside class="sidebar">
       <img
         src="/images/profile.jpeg"
-        alt="Karun"
+        alt="Karun Kumar Jha"
         class="profile-image"
         width="240"
         height="240"
@@ -20,87 +20,145 @@ import SocialLinks from '../components/SocialLinks.astro';
     <main class="main-section">
       <div class="intro">
         <h1>Hello, I'm Karun</h1>
-        <p class="tagline">Code. Cosmic charts. Compound interest. Cantos.</p>
-        <p class="tagline-note">* Execution order varies based on market sentiment and moon phases.</p>
+        <p class="tagline">Senior Data Engineer @ Apollo.io | Building AI integrated Data Solutions</p>
       </div>
 
       <section class="about-section">
         <h2>About Me</h2>
         <p>
-          I'm an engineer who lives at the intersection of 'Does this scale?' and 'Does this rhyme?'
-          Currently, I'm on a self-imposed 'level-up' quest to master the dark arts of data-intensive
-          systems, though I still believe the most complex distributed system ever built is the human
-          heart (or maybe just a really messy SQL join).
+          Senior Data Engineer at Apollo.io, building AI-integrated data solutions. Previously at Uber,
+          Twilio, Embibe, and Informatica — working across the full data stack from real-time Spark
+          streaming to warehouse orchestration.
         </p>
         <p>
-          When I'm not architecting pipelines or obsessing over my lean terminal setup, you'll find me
-          translating the universe's chaos into poetry or looking at the stars to see what the nakshatras
-          have to say about my day.
+          Currently on a self-directed break, deep-diving into distributed systems, data-intensive
+          application design, and the modern data stack. I care about idempotency, observability, and
+          building things that don't page you at 3 AM.
         </p>
         <p>
-          I build systems that work and write words that breathe—all while trying to find the perfect
-          balance between cosmic alignment and 99.9% uptime.
+          When I'm not wrangling DAGs or tuning Spark jobs, I'm reading about system design, contributing
+          to open source, or writing about what I'm learning.
         </p>
       </section>
 
-      <!-- Four Pillars Grid -->
+      <!-- Tech Stack -->
+      <section class="stack-section">
+        <h2>Tech Stack</h2>
+        <div class="stack-grid">
+          <div class="stack-category">
+            <h4>Languages</h4>
+            <div class="stack-tags">
+              <span class="stack-tag">Python</span>
+              <span class="stack-tag">SQL</span>
+              <span class="stack-tag">Scala</span>
+              <span class="stack-tag">Go</span>
+              <span class="stack-tag">Java</span>
+              <span class="stack-tag">Shell Scripting</span>
+            </div>
+          </div>
+          <div class="stack-category">
+            <h4>Processing</h4>
+            <div class="stack-tags">
+              <span class="stack-tag">Apache Spark</span>
+              <span class="stack-tag">Apache Kafka</span>
+              <span class="stack-tag">dbt</span>
+              <span class="stack-tag">Hadoop</span>
+              <span class="stack-tag">gRPC</span>
+            </div>
+          </div>
+          <div class="stack-category">
+            <h4>Orchestration</h4>
+            <div class="stack-tags">
+              <span class="stack-tag">Apache Airflow</span>
+              <span class="stack-tag">Dagster</span>
+            </div>
+          </div>
+          <div class="stack-category">
+            <h4>Storage</h4>
+            <div class="stack-tags">
+              <span class="stack-tag">Snowflake</span>
+              <span class="stack-tag">PostgreSQL</span>
+              <span class="stack-tag">Hive</span>
+              <span class="stack-tag">ElasticSearch</span>
+              <span class="stack-tag">Delta Lake</span>
+              <span class="stack-tag">S3</span>
+            </div>
+          </div>
+          <div class="stack-category">
+            <h4>Infrastructure</h4>
+            <div class="stack-tags">
+              <span class="stack-tag">AWS</span>
+              <span class="stack-tag">GCP</span>
+              <span class="stack-tag">Terraform</span>
+              <span class="stack-tag">Docker</span>
+              <span class="stack-tag">Kubernetes</span>
+              <span class="stack-tag">Linux</span>
+            </div>
+          </div>
+          <div class="stack-category">
+            <h4>Tools & APIs</h4>
+            <div class="stack-tags">
+              <span class="stack-tag">FastAPI</span>
+              <span class="stack-tag">OpenAI API</span>
+              <span class="stack-tag">Hex</span>
+              <span class="stack-tag">Looker</span>
+              <span class="stack-tag">Grafana</span>
+              <span class="stack-tag">Great Expectations</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Focus Areas -->
       <section class="pillars-section">
-        <h2>The Four Pillars</h2>
+        <h2>What I Do</h2>
 
         <div class="pillars-grid">
-          <!-- Card 1: The Engineer -->
-          <a href="https://github.com/karunkumarjha" target="_blank" rel="noopener noreferrer" class="pillar-card engineer">
-            <div class="pillar-icon" aria-hidden="true">[ ]</div>
-            <h3 class="pillar-headline">The Builder</h3>
-            <p class="pillar-vibe">High-scale systems and lean code.</p>
-            <p class="pillar-focus"><strong>Current Focus:</strong> Deep-diving into DDIA and Fundamentals of Data Engineering.</p>
-            <span class="pillar-cta">View GitHub →</span>
-            <span class="pillar-timestamp" aria-hidden="true">Last Commit: Recently</span>
+          <a href="/projects" class="pillar-card pipelines">
+            <div class="pillar-icon" aria-hidden="true">&#9655;</div>
+            <h3 class="pillar-headline">Data Pipelines</h3>
+            <p class="pillar-vibe">Batch and streaming, built for reliability.</p>
+            <p class="pillar-focus"><strong>Focus:</strong> End-to-end pipeline design — ingestion, transformation, and delivery with idempotency and fault tolerance.</p>
+            <span class="pillar-cta">View Projects →</span>
           </a>
 
-          <!-- Card 2: The Investor -->
-          <a href="/blogs" class="pillar-card investor">
-            <div class="pillar-icon" aria-hidden="true">↗</div>
-            <h3 class="pillar-headline">The Strategist</h3>
-            <p class="pillar-vibe">Compounding interest and market mechanics.</p>
-            <p class="pillar-focus"><strong>Current Focus:</strong> Long-term wealth architecture and monitoring market cycles.</p>
-            <span class="pillar-cta">Investment Philosophy →</span>
-            <span class="pillar-timestamp" aria-hidden="true">Portfolio: Bullish</span>
+          <a href="/projects" class="pillar-card platforms">
+            <div class="pillar-icon" aria-hidden="true">&#9744;</div>
+            <h3 class="pillar-headline">Data Platforms</h3>
+            <p class="pillar-vibe">Infrastructure that scales with the data.</p>
+            <p class="pillar-focus"><strong>Focus:</strong> Building data platforms on modern stack — lakehouse architecture, warehouse optimization, and self-serve analytics.</p>
+            <span class="pillar-cta">View Projects →</span>
           </a>
 
-          <!-- Card 3: The Astrologer -->
-          <a href="/blogs" class="pillar-card astrologer">
-            <div class="pillar-icon" aria-hidden="true">✦</div>
-            <h3 class="pillar-headline">The Cosmic Observer</h3>
-            <p class="pillar-vibe">Vedic patterns and Nakshatra insights.</p>
-            <p class="pillar-focus"><strong>Current Focus:</strong> Mapping the intersection of time, karma, and planetary alignment.</p>
-            <span class="pillar-cta">Explore the Patterns →</span>
-            <span class="pillar-timestamp" aria-hidden="true">Stars: Aligned</span>
+          <a href="/projects" class="pillar-card quality">
+            <div class="pillar-icon" aria-hidden="true">&#10003;</div>
+            <h3 class="pillar-headline">Data Quality</h3>
+            <p class="pillar-vibe">Trust your data, or it's just noise.</p>
+            <p class="pillar-focus"><strong>Focus:</strong> Data validation, profiling, anomaly detection, and building observability into every layer of the stack.</p>
+            <span class="pillar-cta">View Projects →</span>
           </a>
 
-          <!-- Card 4: The Poet -->
-          <a href="/poems" class="pillar-card poet">
-            <div class="pillar-icon" aria-hidden="true">✎</div>
-            <h3 class="pillar-headline">The Wordsmith</h3>
-            <p class="pillar-vibe">Abstract thoughts and rhythmic verses.</p>
-            <p class="pillar-focus"><strong>Current Focus:</strong> Translating the "un-engineerable" parts of life into stanzas.</p>
-            <span class="pillar-cta">Open Poem Directory →</span>
-            <span class="pillar-timestamp" aria-hidden="true">Verses: Flowing</span>
+          <a href="/blogs" class="pillar-card writing">
+            <div class="pillar-icon" aria-hidden="true">&#9998;</div>
+            <h3 class="pillar-headline">Technical Writing</h3>
+            <p class="pillar-vibe">Explaining systems clearly.</p>
+            <p class="pillar-focus"><strong>Focus:</strong> Writing about system design, data engineering patterns, and lessons learned building production systems.</p>
+            <span class="pillar-cta">Read Blog →</span>
           </a>
         </div>
 
         <!-- Terminal Footer -->
-        <div class="terminal-footer" role="img" aria-label="Terminal showing status: Systems Optimized, Portfolio Bullish, Stars Aligned, Verses Flowing">
-          <span class="terminal-prompt">karun@life ~ %</span>
-          <span class="terminal-command">status --all</span>
+        <div class="terminal-footer" role="img" aria-label="Terminal showing data engineering status">
+          <span class="terminal-prompt">karun@data-eng ~ %</span>
+          <span class="terminal-command">pipeline status --all</span>
           <div class="terminal-output">
-            <span class="status-item"><span class="status-label">Systems:</span> <span class="status-green">Optimized</span></span>
+            <span class="status-item"><span class="status-label">Pipelines:</span> <span class="status-green">Healthy</span></span>
             <span class="status-divider" aria-hidden="true">|</span>
-            <span class="status-item"><span class="status-label">Portfolio:</span> <span class="status-green">Bullish</span></span>
+            <span class="status-item"><span class="status-label">Data Quality:</span> <span class="status-green">Passing</span></span>
             <span class="status-divider" aria-hidden="true">|</span>
-            <span class="status-item"><span class="status-label">Stars:</span> <span class="status-green">Aligned</span></span>
+            <span class="status-item"><span class="status-label">Freshness:</span> <span class="status-green">On Time</span></span>
             <span class="status-divider" aria-hidden="true">|</span>
-            <span class="status-item"><span class="status-label">Verses:</span> <span class="status-green">Flowing</span></span>
+            <span class="status-item"><span class="status-label">Uptime:</span> <span class="status-green">99.9%</span></span>
           </div>
         </div>
 

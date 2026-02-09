@@ -10,7 +10,7 @@ interface Props {
 
 const {
   title,
-  description = "Karun's personal website - blogs, poems, and more.",
+  description = "Karun Kumar Jha — Data Engineer. Building reliable, scalable data systems.",
   image = "/images/profile.jpeg"
 } = Astro.props;
 
@@ -25,26 +25,27 @@ const socialImageURL = new URL(image, Astro.site);
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="robots" content="index, follow" />
+    <meta name="keywords" content="data engineer, data engineering, data pipelines, Apache Spark, Apache Kafka, Airflow, dbt, ETL, ELT, Python, SQL" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href={canonicalURL} />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL} />
-    <meta property="og:title" content={`${title} | Karun`} />
+    <meta property="og:title" content={`${title} | Karun Kumar Jha — Data Engineer`} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={socialImageURL} />
-    <meta property="og:site_name" content="Karun" />
+    <meta property="og:site_name" content="Karun Kumar Jha" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content={canonicalURL} />
-    <meta name="twitter:title" content={`${title} | Karun`} />
+    <meta name="twitter:title" content={`${title} | Karun Kumar Jha — Data Engineer`} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={socialImageURL} />
     <meta name="twitter:creator" content="@karunkumarjha" />
 
-    <title>{title} | Karun</title>
+    <title>{title} | Karun Kumar Jha — Data Engineer</title>
     <script is:inline>
       // Prevent flash of wrong theme
       (function() {
@@ -63,8 +64,8 @@ const socialImageURL = new URL(image, Astro.site);
         <!-- Desktop Navigation -->
         <ul class="nav-links desktop-nav">
           <li><a href="/">Home</a></li>
-          <li><a href="/blogs">Blogs</a></li>
-          <li><a href="/poems">Poems</a></li>
+          <li><a href="/projects">Projects</a></li>
+          <li><a href="/blogs">Blog</a></li>
         </ul>
 
         <div class="nav-right">
@@ -110,8 +111,8 @@ const socialImageURL = new URL(image, Astro.site);
       <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Mobile navigation menu">
         <ul class="mobile-nav-links">
           <li><a href="/">Home</a></li>
-          <li><a href="/blogs">Blogs</a></li>
-          <li><a href="/poems">Poems</a></li>
+          <li><a href="/projects">Projects</a></li>
+          <li><a href="/blogs">Blog</a></li>
         </ul>
         <SocialLinks variant="mobile" />
       </div>
@@ -123,7 +124,7 @@ const socialImageURL = new URL(image, Astro.site);
 
     <footer class="site-footer">
       <SocialLinks variant="footer" />
-      <p class="copyright">&copy; {new Date().getFullYear()} Karun. All rights reserved.</p>
+      <p class="copyright">&copy; {new Date().getFullYear()} Karun Kumar Jha. All rights reserved.</p>
     </footer>
 
     <script>
