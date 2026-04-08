@@ -1,5 +1,7 @@
 # Karun & Ashwini — Wedding Invitation
 
+**Live:** https://karunkumarjha.github.io
+
 A digital wedding invitation built as a single-page web experience with an Indian ethnic theme.
 
 ## Features
