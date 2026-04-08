@@ -81,6 +81,14 @@
       margin-bottom: 20px;
       animation: floatPetal 3s ease-in-out infinite;
     }
+    #splash-guest {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(32px, 7vw, 52px);
+      color: var(--gold-light);
+      margin: 0 0 6px;
+      text-shadow: 0 0 24px rgba(212,175,55,0.5);
+      display: none;
+    }
     #splash-title {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(38px, 8vw, 62px);
@@ -681,6 +689,7 @@
   <div class="splash-ring" style="width:640px;height:640px;animation-duration:12s;animation-delay:2.4s;border-style:dashed;"></div>
   <div id="splash-inner">
     <div id="splash-rings">💍</div>
+    <p id="splash-guest"></p>
     <h1 id="splash-title">Psst… you're invited.</h1>
     <p id="splash-sub">But first — your ears need to RSVP too.<br/>Unmute your soul and step inside.</p>
     <button id="splash-btn" aria-label="Open the wedding invitation">Open the invitation ✨</button>
@@ -913,15 +922,20 @@
 /* ── GUEST NAME ───────────────────────────────────────── */
   const params    = new URLSearchParams(window.location.search);
   const guestName = params.get('guest') || params.get('name') || '';
-  const guestEl   = document.getElementById('guest-text');
-  if (guestName) {
-    guestEl.innerHTML = `Welcome, <strong>${escapeHtml(guestName)}</strong> &nbsp;·&nbsp; With love from Karun &amp; Ashwini`;
-    document.getElementById('guest-banner').style.display = 'block';
-  }
   function escapeHtml(s) {
     const d = document.createElement('div');
     d.textContent = s;
     return d.innerHTML;
+  }
+  if (guestName) {
+    // Splash screen — guest name above the title
+    const splashGuest = document.getElementById('splash-guest');
+    splashGuest.textContent = 'Dear ' + guestName + ',';
+    splashGuest.style.display = 'block';
+    // Slide banner
+    const guestEl = document.getElementById('guest-text');
+    guestEl.innerHTML = `With love from Karun &amp; Ashwini`;
+    document.getElementById('guest-banner').style.display = 'block';
   }
 
   /* ── NAV DOTS ─────────────────────────────────────────── */
