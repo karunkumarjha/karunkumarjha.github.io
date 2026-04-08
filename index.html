@@ -34,6 +34,7 @@
     html, body {
       width: 100%; height: 100%;
       overflow: hidden;
+      overscroll-behavior: none;
       font-family: 'Cormorant Garamond', Georgia, serif;
       background: #0d1c1c;
       color: var(--cream);
@@ -998,9 +999,19 @@
   });
 
   /* ── TOUCH / SWIPE ────────────────────────────────────── */
-  let touchStartX = 0;
-  document.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
-  document.addEventListener('touchend',   e => {
+  let touchStartX = 0, touchStartY = 0;
+  document.addEventListener('touchstart', e => {
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+  }, { passive: true });
+  // Block browser horizontal pan during a predominantly horizontal swipe
+  // so the viewport doesn't drift and make the card appear off-centre.
+  document.addEventListener('touchmove', e => {
+    const dx = Math.abs(e.touches[0].clientX - touchStartX);
+    const dy = Math.abs(e.touches[0].clientY - touchStartY);
+    if (dx > dy) e.preventDefault();
+  }, { passive: false });
+  document.addEventListener('touchend', e => {
     const dx = e.changedTouches[0].clientX - touchStartX;
     if (Math.abs(dx) > 50) { dx < 0 ? next(true) : prev(true); }
   });
