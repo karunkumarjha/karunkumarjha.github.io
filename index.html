@@ -3,7 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Wedding Invitation — Karun Kumar & Ashwini Mishra</title>
+  <meta name="description" content="You are warmly invited to celebrate the wedding of Karun Kumar and Ashwini Mishra — 30 June & 1 July 2026 at Ved Guest House." />
+  <meta property="og:title" content="Karun & Ashwini — Wedding Invitation" />
+  <meta property="og:description" content="Join us for Haldi, Sangeet, Vivaah & Reception — 30 June & 1 July 2026." />
+  <meta property="og:type" content="website" />
+  <title>Karun &amp; Ashwini — Wedding Invitation</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Great+Vibes&display=swap" rel="stylesheet" />
@@ -167,13 +171,21 @@
       pointer-events: auto;
     }
 
-    /* BG gradients per screen */
-    #screen-welcome   { background: radial-gradient(ellipse at 50% 30%, #1a4a3a 0%, #0c2020 100%); }
-    #screen-haldi     { background: radial-gradient(ellipse at 50% 30%, #6b3500 0%, #3a1a00 100%); }
-    #screen-sangeet   { background: radial-gradient(ellipse at 50% 30%, #3d0e6a 0%, #1a0530 100%); }
-    #screen-vivaah    { background: radial-gradient(ellipse at 50% 30%, #7a1010 0%, #2e0505 100%); }
-    #screen-reception { background: radial-gradient(ellipse at 50% 30%, #0d3a5c 0%, #030d1a 100%); }
-    #screen-all       { background: radial-gradient(ellipse at 50% 30%, #1a3a2a 0%, #080f0f 100%); }
+    /* BG gradients per screen — rich Indian palette */
+    #screen-welcome   { background: radial-gradient(ellipse at 40% 25%, #1e6048 0%, #0e2e28 55%, #050e0e 100%); }
+    #screen-haldi     { background: radial-gradient(ellipse at 60% 25%, #7a3800 0%, #4a1e00 50%, #180800 100%); }
+    #screen-sangeet   { background: radial-gradient(ellipse at 40% 30%, #520d8a 0%, #300560 50%, #0d0120 100%); }
+    #screen-vivaah    { background: radial-gradient(ellipse at 50% 20%, #8c0e0e 0%, #520404 50%, #160101 100%); }
+    #screen-reception { background: radial-gradient(ellipse at 50% 30%, #0e3f72 0%, #061a34 50%, #010508 100%); }
+    #screen-all       { background: radial-gradient(ellipse at 50% 25%, #1b4a36 0%, #0a2018 60%, #020a06 100%); }
+
+    /* Ambient golden corner glows on every slide */
+    .screen::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+      background:
+        radial-gradient(ellipse at 10% 90%, rgba(212,175,55,0.10) 0%, transparent 40%),
+        radial-gradient(ellipse at 90% 10%, rgba(212,175,55,0.10) 0%, transparent 40%);
+    }
 
     /* ── ORNAMENTAL BORDERS ───────────────────────────────── */
     .card {
@@ -503,6 +515,94 @@
     #screen-reception.visible .card { animation: card-drop        3.0s cubic-bezier(0.16,1,0.3,1) both; }
     #screen-all.visible       .card { animation: card-unfurl      3.2s cubic-bezier(0.16,1,0.3,1) both; }
 
+    /* ── MANDALA BACKGROUND ──────────────────────────────────── */
+    #mandala-bg {
+      position: fixed; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      pointer-events: none; z-index: 2; overflow: hidden;
+    }
+    #mandala-outer {
+      position: absolute;
+      width: min(96vw, 96vh); height: min(96vw, 96vh);
+      opacity: 0.09;
+      animation: mandala-spin 90s linear infinite;
+    }
+    #mandala-inner {
+      position: absolute;
+      width: min(54vw, 54vh); height: min(54vw, 54vh);
+      opacity: 0.07;
+      animation: mandala-spin 45s linear infinite reverse;
+    }
+    @keyframes mandala-spin { to { transform: rotate(360deg); } }
+
+    /* ── CARD GOLDEN GLOW ON ENTRY ───────────────────────────── */
+    .screen.visible .card {
+      box-shadow:
+        0 0 80px rgba(212,175,55,0.14),
+        0 0 24px rgba(212,175,55,0.08),
+        inset 0 0 50px rgba(212,175,55,0.05);
+    }
+
+    /* ── CARD CONTENT STAGGER ─────────────────────────────────── */
+    @keyframes contentFadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    /* corners are children 1 & 2 — suppress animation on them */
+    .screen.visible .card > .corner-tr,
+    .screen.visible .card > .corner-bl { animation: none !important; opacity: 1 !important; }
+    .card.card-exit > * { animation: none !important; opacity: 1 !important; }
+
+    .screen.visible .card > *:nth-child(3)  { animation: contentFadeUp 0.8s ease both; animation-delay: 0.55s; }
+    .screen.visible .card > *:nth-child(4)  { animation: contentFadeUp 0.8s ease both; animation-delay: 0.80s; }
+    .screen.visible .card > *:nth-child(5)  { animation: contentFadeUp 0.8s ease both; animation-delay: 1.05s; }
+    .screen.visible .card > *:nth-child(6)  { animation: contentFadeUp 0.8s ease both; animation-delay: 1.30s; }
+    .screen.visible .card > *:nth-child(7)  { animation: contentFadeUp 0.8s ease both; animation-delay: 1.55s; }
+    .screen.visible .card > *:nth-child(8)  { animation: contentFadeUp 0.8s ease both; animation-delay: 1.80s; }
+    .screen.visible .card > *:nth-child(9)  { animation: contentFadeUp 0.8s ease both; animation-delay: 2.05s; }
+
+    /* ── CEREMONY ICON FLOAT ──────────────────────────────────── */
+    @keyframes iconFloat {
+      0%, 100% { transform: translateY(0)   scale(1);    filter: drop-shadow(0 0 14px rgba(212,175,55,0.65)); }
+      50%       { transform: translateY(-9px) scale(1.07); filter: drop-shadow(0 0 28px rgba(212,175,55,1.0));  }
+    }
+    .ceremony-icon { animation: iconFloat 3.2s ease-in-out infinite !important; }
+
+    /* ── OM PULSE ─────────────────────────────────────────────── */
+    @keyframes omPulse {
+      0%, 100% { text-shadow: 0 0 18px rgba(212,175,55,0.5), 0 0 36px rgba(212,175,55,0.2); transform: scale(1) rotate(0deg); }
+      50%       { text-shadow: 0 0 32px rgba(212,175,55,1.0), 0 0 64px rgba(212,175,55,0.5), 0 0 96px rgba(212,175,55,0.2); transform: scale(1.1) rotate(3deg); }
+    }
+    .om { animation: omPulse 4s ease-in-out infinite !important; }
+
+    /* ── THEME PARTICLE CANVAS ────────────────────────────────── */
+    .theme-canvas {
+      position: absolute; inset: 0;
+      pointer-events: none; overflow: hidden; z-index: 5;
+    }
+    .tp {
+      position: absolute; pointer-events: none;
+      animation: tpFly linear forwards;
+    }
+    @keyframes tpFly {
+      0%   { opacity: 0; transform: translate(0,0) scale(0.4) rotate(0deg); }
+      15%  { opacity: 1; }
+      85%  { opacity: 0.8; }
+      100% { opacity: 0; transform: translate(var(--tx,0px), var(--ty,-120px)) scale(var(--ts,1)) rotate(var(--tr,180deg)); }
+    }
+
+    /* ── SPLASH RINGS ─────────────────────────────────────────── */
+    .splash-ring {
+      position: absolute; border-radius: 50%;
+      border: 1px solid rgba(212,175,55,0.22);
+      pointer-events: none;
+      animation: splashRingBreath ease-in-out infinite;
+    }
+    @keyframes splashRingBreath {
+      0%, 100% { transform: scale(1);    opacity: 0.35; }
+      50%       { transform: scale(1.06); opacity: 0.12; }
+    }
+
     /* ── RESPONSIVE ───────────────────────────────────────── */
 
     /* Tablet: 641px – 1024px */
@@ -574,13 +674,23 @@
 
 <!-- ── Splash Screen ──────────────────────────────────── -->
 <div id="splash">
+  <div class="splash-ring" style="width:220px;height:220px;animation-duration:4s;"></div>
+  <div class="splash-ring" style="width:340px;height:340px;animation-duration:6s;animation-delay:0.8s;"></div>
+  <div class="splash-ring" style="width:480px;height:480px;animation-duration:9s;animation-delay:1.6s;"></div>
+  <div class="splash-ring" style="width:640px;height:640px;animation-duration:12s;animation-delay:2.4s;border-style:dashed;"></div>
   <div id="splash-inner">
     <div id="splash-rings">💍</div>
     <h1 id="splash-title">Psst… you're invited.</h1>
     <p id="splash-sub">But first — your ears need to RSVP too.<br/>Unmute your soul and step inside.</p>
-    <button id="splash-btn">Open the invitation ✨</button>
+    <button id="splash-btn" aria-label="Open the wedding invitation">Open the invitation ✨</button>
     <p id="splash-note">🔊 Best experienced with sound on</p>
   </div>
+</div>
+
+<!-- ── Mandala background ──────────────────────────────── -->
+<div id="mandala-bg">
+  <div id="mandala-outer"></div>
+  <div id="mandala-inner"></div>
 </div>
 
 <!-- ── YouTube Player (hidden) ─────────────────────────── -->
@@ -607,14 +717,14 @@
 <!-- ════════════════════════════════════════════════════════
      SCREEN 0 — WELCOME
      ══════════════════════════════════════════════════════ -->
-<section class="screen" id="screen-welcome">
+<section class="screen" id="screen-welcome" aria-label="Welcome">
   <div class="card">
     <div class="corner-tr"></div><div class="corner-bl"></div>
 
     <div class="om">ॐ</div>
     <div class="divider" style="font-size:clamp(16px,2.5vw,22px);letter-spacing:0.2em;font-weight:600;">Shubh Vivah</div>
 
-    <!-- Couple photo (replace src with base64 data URI) -->
+    <!-- Couple photo -->
     <div class="photo-wrap" id="couple-photo">
       <img src="assets/images/couple.jpg" alt="Karun &amp; Ashwini" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" />
     </div>
@@ -638,6 +748,7 @@
      SCREEN 1 — HALDI
      ══════════════════════════════════════════════════════ -->
 <section class="screen" id="screen-haldi">
+  <div class="theme-canvas" id="tc-haldi"></div>
   <div class="card">
     <div class="corner-tr"></div><div class="corner-bl"></div>
     <div class="ceremony-icon">🌼</div>
@@ -660,6 +771,7 @@
      SCREEN 2 — SANGEET
      ══════════════════════════════════════════════════════ -->
 <section class="screen" id="screen-sangeet">
+  <div class="theme-canvas" id="tc-sangeet"></div>
   <div class="card">
     <div class="corner-tr"></div><div class="corner-bl"></div>
     <div class="ceremony-icon">🎶</div>
@@ -682,6 +794,7 @@
      SCREEN 3 — VIVAAH
      ══════════════════════════════════════════════════════ -->
 <section class="screen" id="screen-vivaah">
+  <div class="theme-canvas" id="tc-vivaah"></div>
   <div class="card">
     <div class="corner-tr"></div><div class="corner-bl"></div>
     <div class="ceremony-icon">🪔</div>
@@ -695,7 +808,7 @@
     </div>
     <div class="divider"></div>
     <p style="font-size:clamp(16px,3vw,22px);color:rgba(255,248,225,0.85);line-height:1.8;font-style:italic;font-weight:600;">
-      Under starlit skies, two souls unite in the sacred fire —<br/>joined forever by love and the Vedic rites.
+      Two souls unite in the sacred fire —<br/>joined forever by love and the Vedic rites.
     </p>
   </div>
 </section>
@@ -704,6 +817,7 @@
      SCREEN 4 — RECEPTION
      ══════════════════════════════════════════════════════ -->
 <section class="screen" id="screen-reception">
+  <div class="theme-canvas" id="tc-reception"></div>
   <div class="card">
     <div class="corner-tr"></div><div class="corner-bl"></div>
     <div class="ceremony-icon">✨</div>
@@ -847,6 +961,9 @@
     screens[current].classList.add('visible');
     dots[current].classList.add('active');
 
+    // Fire theme burst for event slides
+    setTimeout(() => spawnThemeBurst(SCREENS[current]), 800);
+
     setTimeout(() => {
       transitioning = false;
       startAutoAdvance();
@@ -919,33 +1036,142 @@
     }
   });
 
-  /* ── FLOATING PETALS ──────────────────────────────────── */
+  /* ── MANDALA GENERATION ───────────────────────────────── */
+  (function buildMandala() {
+    const NS = 'http://www.w3.org/2000/svg';
+    function makeSVG(layers, dotRing, circles) {
+      const svg = document.createElementNS(NS, 'svg');
+      svg.setAttribute('viewBox', '0 0 400 400');
+      svg.style.cssText = 'width:100%;height:100%;';
+      const g = document.createElementNS(NS, 'g');
+      g.setAttribute('transform', 'translate(200,200)');
+      g.setAttribute('fill', 'none');
+      g.setAttribute('stroke', 'rgba(212,175,55,0.9)');
+      // Concentric circles
+      circles.forEach(({ r, dash, sw }) => {
+        const c = document.createElementNS(NS, 'circle');
+        c.setAttribute('r', r);
+        c.setAttribute('stroke-width', sw || 0.8);
+        if (dash) c.setAttribute('stroke-dasharray', dash);
+        g.appendChild(c);
+      });
+      // Petal layers
+      layers.forEach(({ r, count, rx, ry }) => {
+        for (let i = 0; i < count; i++) {
+          const pg = document.createElementNS(NS, 'g');
+          pg.setAttribute('transform', `rotate(${(360 / count) * i})`);
+          const el = document.createElementNS(NS, 'ellipse');
+          el.setAttribute('cx', 0); el.setAttribute('cy', -r);
+          el.setAttribute('rx', rx); el.setAttribute('ry', ry);
+          pg.appendChild(el); g.appendChild(pg);
+        }
+      });
+      // Dot ring
+      if (dotRing) {
+        const { r, count } = dotRing;
+        for (let i = 0; i < count; i++) {
+          const a = (2 * Math.PI / count) * i;
+          const d = document.createElementNS(NS, 'circle');
+          d.setAttribute('cx', +(r * Math.sin(a)).toFixed(1));
+          d.setAttribute('cy', -(r * Math.cos(a)).toFixed(1));
+          d.setAttribute('r', 2.8);
+          d.setAttribute('fill', 'rgba(212,175,55,0.7)');
+          d.setAttribute('stroke', 'none');
+          g.appendChild(d);
+        }
+      }
+      svg.appendChild(g);
+      return svg;
+    }
+    const outer = makeSVG(
+      [{ r:168, count:8, rx:16, ry:46 }, { r:128, count:12, rx:10, ry:30 }, { r:88, count:16, rx:7, ry:18 }],
+      { r:148, count:32 },
+      [{ r:185, sw:1 }, { r:168, dash:'4 8' }, { r:130, sw:0.6 }, { r:90, dash:'2 5' }, { r:55 }, { r:28, dash:'3 6' }]
+    );
+    const inner = makeSVG(
+      [{ r:80, count:6, rx:14, ry:38 }, { r:55, count:8, rx:9, ry:22 }, { r:32, count:12, rx:5, ry:12 }],
+      { r:68, count:18 },
+      [{ r:88, sw:1 }, { r:70, dash:'3 6' }, { r:48 }, { r:28, dash:'2 4' }, { r:14 }]
+    );
+    document.getElementById('mandala-outer').appendChild(outer);
+    document.getElementById('mandala-inner').appendChild(inner);
+  })();
+
+  /* ── FLOATING PETALS (Indian festival palette) ─────────── */
   const petalColors = [
-    '#D4AF37','#F0D060','#E88C44','#C9667A',
-    '#9FD4B0','#FF9F6B','#FFD700','#FFA07A',
+    '#FF6B00','#FF9500','#FFB700', // saffron / marigold
+    '#FFD700','#F0D060','#D4AF37', // gold
+    '#FF4B82','#E8336D',           // rose / gulal pink
+    '#FFF0C0','#FAEBD7',           // jasmine / cream
+  ];
+  const petalShapes = [
+    '50% 0 50% 0', '50%', '40% 60% 60% 40%',
+    '50% 50% 0 0', '0 50% 50% 50%',
   ];
   const canvas = document.getElementById('petals-canvas');
 
   function spawnPetal() {
     const p = document.createElement('div');
     p.className = 'petal';
-    const size = 6 + Math.random() * 10;
+    const size = 7 + Math.random() * 11;
     p.style.cssText = [
       `left:${Math.random() * 100}%`,
-      `width:${size}px`,
-      `height:${size}px`,
+      `width:${size}px`, `height:${size * (0.7 + Math.random() * 0.8)}px`,
       `background:${petalColors[Math.floor(Math.random() * petalColors.length)]}`,
       `opacity:0`,
-      `animation-duration:${6 + Math.random() * 8}s`,
+      `animation-duration:${7 + Math.random() * 9}s`,
       `animation-delay:${Math.random() * 2}s`,
-      `border-radius:${Math.random() > 0.5 ? '50% 0 50% 0' : '50%'}`,
+      `border-radius:${petalShapes[Math.floor(Math.random() * petalShapes.length)]}`,
     ].join(';');
     canvas.appendChild(p);
-    setTimeout(() => p.remove(), 16000);
+    setTimeout(() => p.remove(), 18000);
   }
 
-  setInterval(spawnPetal, 400);
-  for (let i = 0; i < 10; i++) spawnPetal();
+  /* ── PER-SLIDE THEME BURST ───────────────────────────────── */
+  const THEME_CONFIG = {
+    'screen-haldi':     { chars:['·','•','✦','◦'], colors:['#FFD700','#FFA500','#FF8C00','#FFEC8B'], fly:'up',   count:28 },
+    'screen-sangeet':   { chars:['♪','♫','♩','♬'], colors:['#E040FB','#CE93D8','#FFD700','#FF80AB'], fly:'drift',count:20 },
+    'screen-vivaah':    { chars:['✦','•','◦','*'],  colors:['#FF6B35','#FF4500','#FFD700','#FF8C00'], fly:'spark',count:32 },
+    'screen-reception': { chars:['✦','★','✧','·'],  colors:['#FFD700','#FFF8E1','#F0D060','#E8D5A3'], fly:'fall', count:24 },
+  };
+
+  function spawnThemeBurst(screenId) {
+    const cfg = THEME_CONFIG[screenId];
+    if (!cfg) return;
+    const tc = document.getElementById('tc-' + screenId.replace('screen-',''));
+    if (!tc) return;
+    tc.innerHTML = '';
+    for (let i = 0; i < cfg.count; i++) {
+      setTimeout(() => {
+        const el = document.createElement('div');
+        el.className = 'tp';
+        el.textContent = cfg.chars[Math.floor(Math.random() * cfg.chars.length)];
+        const x = 10 + Math.random() * 80, y = 20 + Math.random() * 70;
+        let tx = (Math.random() - 0.5) * 200,
+            ty = cfg.fly === 'up'    ? -(80 + Math.random() * 160) :
+                 cfg.fly === 'fall'  ?  (60 + Math.random() * 120) :
+                 cfg.fly === 'spark' ? -(40 + Math.random() * 120) :
+                                        (Math.random() - 0.5) * 140 - 60;
+        const dur  = 2.5 + Math.random() * 2.5;
+        const size = 12 + Math.random() * 18;
+        el.style.cssText = [
+          `left:${x}%`, `top:${y}%`,
+          `font-size:${size}px`,
+          `color:${cfg.colors[Math.floor(Math.random() * cfg.colors.length)]}`,
+          `--tx:${tx}px`, `--ty:${ty}px`,
+          `--ts:${0.3 + Math.random() * 0.5}`,
+          `--tr:${(Math.random()-0.5)*360}deg`,
+          `animation-duration:${dur}s`,
+          `filter:drop-shadow(0 0 4px currentColor)`,
+        ].join(';');
+        tc.appendChild(el);
+        setTimeout(() => el.remove(), dur * 1000 + 200);
+      }, i * 60);
+    }
+  }
+
+  setInterval(spawnPetal, 350);
+  for (let i = 0; i < 14; i++) spawnPetal();
 
 })();
 </script>
