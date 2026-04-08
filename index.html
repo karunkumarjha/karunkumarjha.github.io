@@ -428,22 +428,8 @@
     }
     .dot.active { background: var(--gold); transform: scale(1.35); }
 
-    /* nav arrows */
-    .nav-arrow {
-      position: fixed; top: 50%; z-index: 800;
-      transform: translateY(-50%);
-      background: rgba(212,175,55,0.1);
-      border: 1px solid rgba(212,175,55,0.35);
-      color: var(--gold);
-      width: 40px; height: 40px; border-radius: 50%;
-      cursor: pointer; font-size: 18px;
-      display: flex; align-items: center; justify-content: center;
-      transition: background 0.3s;
-      backdrop-filter: blur(4px);
-    }
-    .nav-arrow:hover { background: rgba(212,175,55,0.25); }
-    #nav-prev { left: 12px; }
-    #nav-next { right: 12px; }
+    /* nav arrows — hidden on all devices */
+    .nav-arrow { display: none; }
 
 /* ── AUTO-ADVANCE RING ────────────────────────────────── */
     .countdown-ring {
@@ -652,11 +638,6 @@
       .event-mini-title { font-size: 16px; }
       .event-mini p { font-size: 12px; }
 
-      /* Nav arrows: move inward so they don't overlap card edges */
-      .nav-arrow  { width: 32px; height: 32px; font-size: 14px; }
-      #nav-prev   { left: 4px; }
-      #nav-next   { right: 4px; }
-
       /* Dots: larger hit area */
       .dot { width: 10px; height: 10px; }
     }
@@ -713,10 +694,6 @@
 
 <!-- ── Music Button ────────────────────────────────────── -->
 <button id="music-btn" title="Toggle Music" aria-label="Toggle music">♪</button>
-
-<!-- ── Nav arrows ──────────────────────────────────────── -->
-<button class="nav-arrow" id="nav-prev" aria-label="Previous">&#8592;</button>
-<button class="nav-arrow" id="nav-next" aria-label="Next">&#8594;</button>
 
 <!-- ── Nav dots ────────────────────────────────────────── -->
 <div id="nav-dots"></div>
@@ -988,8 +965,6 @@
   function next(force = false) { goTo((current + 1) % SCREENS.length, force); }
   function prev(force = false) { goTo((current - 1 + SCREENS.length) % SCREENS.length, force); }
 
-  document.getElementById('nav-next').addEventListener('click', () => next(true));
-  document.getElementById('nav-prev').addEventListener('click', () => prev(true));
 
   /* ── AUTO-ADVANCE ────────────────────────────────────────── */
   function startAutoAdvance() {
