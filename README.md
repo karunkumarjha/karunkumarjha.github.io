@@ -15,8 +15,12 @@ A digital wedding invitation built as a single-page web experience.
 
 ```
 wedding-card/
-├── index.html       # Single-file app (HTML + CSS + JS)
-├── music.mp3        # Background music (not tracked in git)
+├── index.html            # Single-file app (HTML + CSS + JS)
+├── assets/
+│   ├── audio/
+│   │   └── music.mp3     # Background music
+│   └── images/           # Couple photos and other assets
+├── .gitignore
 └── README.md
 ```
 
