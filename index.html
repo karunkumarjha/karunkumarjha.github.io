@@ -129,22 +129,6 @@
       letter-spacing: 0.05em;
     }
 
-    /* ── MUSIC BUTTON ─────────────────────────────────────── */
-    #music-btn {
-      position: fixed; top: 16px; right: 16px; z-index: 1000;
-      background: rgba(212,175,55,0.15);
-      border: 1.5px solid var(--gold);
-      color: var(--gold-light);
-      width: 46px; height: 46px; border-radius: 50%;
-      cursor: pointer; font-size: 20px;
-      display: flex; align-items: center; justify-content: center;
-      transition: background 0.3s, transform 0.2s;
-      backdrop-filter: blur(4px);
-    }
-    #music-btn:hover { background: rgba(212,175,55,0.3); transform: scale(1.1); }
-    #music-btn.playing { color: var(--gold); }
-
-
     /* ── GUEST BANNER ─────────────────────────────────────── */
     #guest-banner {
       position: fixed; top: 0; left: 50%; transform: translateX(-50%);
@@ -775,7 +759,6 @@
 </div>
 
 <!-- ── Music Button ────────────────────────────────────── -->
-<button id="music-btn" title="Toggle Music" aria-label="Toggle music">♪</button>
 
 <!-- ── Nav dots ────────────────────────────────────────── -->
 <div id="nav-dots"></div>
@@ -815,7 +798,7 @@
         <span>🌸</span><span>🪷</span><span>🌸</span><span>🪷</span><span>🌸</span>
       </div>
       <p class="welcome-dates">30 June &amp; 1 July 2026</p>
-      <p class="welcome-venue">📍 Ved Guest House</p>
+      <p class="welcome-venue">KANPUR</p>
     </div>
 
   </div>
@@ -991,7 +974,6 @@
 
   const screens     = SCREENS.map(id => document.getElementById(id));
   const dotsEl      = document.getElementById('nav-dots');
-  const musicBtn    = document.getElementById('music-btn');
 /* ── GUEST NAME ───────────────────────────────────────── */
   const params    = new URLSearchParams(window.location.search);
   const guestName = params.get('guest') || params.get('name') || '';
@@ -1101,9 +1083,6 @@
   /* ── AUDIO PLAYBACK ──────────────────────────────────────── */
   function setMusicUI(playing) {
     musicPlaying = playing;
-    musicBtn.textContent = playing ? '🎵' : '♪';
-    musicBtn.title       = playing ? 'Pause music' : 'Play music';
-    playing ? musicBtn.classList.add('playing') : musicBtn.classList.remove('playing');
   }
 
   /* ── SPLASH DISMISS ──────────────────────────────────────── */
@@ -1121,16 +1100,6 @@
   splashEl.addEventListener('touchstart', (e) => {
     if (e.target === splashBtn) return; // handled above
   }, { passive: true });
-
-  musicBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    if (musicPlaying) {
-      audioEl.pause();
-      setMusicUI(false);
-    } else {
-      audioEl.play().then(() => setMusicUI(true));
-    }
-  });
 
   /* ── MANDALA GENERATION ───────────────────────────────── */
   (function buildMandala() {
