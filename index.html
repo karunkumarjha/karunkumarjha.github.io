@@ -610,6 +610,40 @@
     .diya-row span:nth-child(3) { animation-delay: 0.8s; }
     .diya-row span:nth-child(4) { animation-delay: 1.2s; }
     .diya-row span:nth-child(5) { animation-delay: 1.6s; }
+    /* ── WELCOME FOOTER ──────────────────────────────────────── */
+    .welcome-footer {
+      margin-top: auto;
+      padding-top: 14px;
+      text-align: center;
+      width: 100%;
+    }
+    .flower-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: clamp(10px, 2.5vw, 20px);
+      font-size: clamp(20px, 4vw, 28px);
+    }
+    .flower-row span { display: inline-block; animation: diyaFloat 3s ease-in-out infinite; }
+    .flower-row span:nth-child(2) { animation-delay: 0.5s; }
+    .flower-row span:nth-child(3) { animation-delay: 1.0s; }
+    .flower-row span:nth-child(4) { animation-delay: 1.5s; }
+    .flower-row span:nth-child(5) { animation-delay: 2.0s; }
+    .welcome-dates {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(15px, 2.5vw, 20px);
+      color: var(--gold);
+      letter-spacing: 0.08em;
+      font-weight: 600;
+      margin-top: 8px;
+    }
+    .welcome-venue {
+      font-size: clamp(12px, 1.8vw, 15px);
+      color: rgba(255,248,225,0.55);
+      letter-spacing: 0.06em;
+      margin-top: 4px;
+    }
+
     /* ── SPLASH RINGS ─────────────────────────────────────────── */
     .splash-ring {
       position: absolute; border-radius: 50%;
@@ -659,7 +693,11 @@
       #screen-welcome .om         { margin-top: 0; margin-bottom: 10px; font-size: clamp(28px, 7vw, 36px); }
       #screen-welcome .divider    { margin-bottom: 8px; }
       #screen-welcome .couple-stack { gap: 18px; margin-top: 10px; }
-      #screen-welcome .parent-names { font-size: 13px; margin-top: 5px; line-height: 1.6; }
+      #screen-welcome .parent-names  { font-size: 13px; margin-top: 5px; line-height: 1.6; }
+      #screen-welcome .welcome-footer { padding-top: 10px; }
+      #screen-welcome .flower-row     { font-size: 18px; gap: 10px; }
+      #screen-welcome .welcome-dates  { font-size: 13px; margin-top: 6px; }
+      #screen-welcome .welcome-venue  { font-size: 11px; margin-top: 3px; }
 
       /* ── Ceremony slides ── */
       .ceremony-icon     { font-size: clamp(36px, 12vw, 56px); }
@@ -770,6 +808,14 @@
         <span class="couple-names shimmer-text">Ashwini</span>
         <div class="parent-names">Akhilesh Chand Mishra<br/>&amp; Vandana Mishra</div>
       </div>
+    </div>
+
+    <div class="welcome-footer">
+      <div class="flower-row">
+        <span>🌸</span><span>🪷</span><span>🌸</span><span>🪷</span><span>🌸</span>
+      </div>
+      <p class="welcome-dates">30 June &amp; 1 July 2026</p>
+      <p class="welcome-venue">📍 Ved Guest House</p>
     </div>
 
   </div>
