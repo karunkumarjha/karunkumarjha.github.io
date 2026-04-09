@@ -60,9 +60,9 @@ Each slide displays for **~8.3 seconds** before transitioning (3s cinematic tran
 
 | Ceremony | Date | Time |
 |---|---|---|
-| Haldi | Tuesday, 30 June 2026 | 12:00 PM onwards |
-| Sangeet | Tuesday, 30 June 2026 | 4:00 PM onwards |
-| Vivaah | Wednesday, 1 July 2026 | 9:00 AM onwards |
-| Reception | Wednesday, 1 July 2026 | 6:00 PM onwards |
+| Haldi | Tuesday, 30 June 2026 | 12:00 PM onwards | Bandhan Guest House |
+| Sangeet | Tuesday, 30 June 2026 | 4:00 PM onwards | Bandhan Guest House |
+| Vivaah | Wednesday, 1 July 2026 | 9:00 AM onwards | Ved Guest House |
+| Reception | Wednesday, 1 July 2026 | 6:00 PM onwards | Ved Guest House |
 
-**Venue:** Ved Guest House, Kanpur
+**Location:** Kanpur
