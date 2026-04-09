@@ -646,13 +646,16 @@
       /* Allow detail rows to wrap on very narrow phones */
       .detail-row        { flex-wrap: wrap; gap: 4px 10px; }
 
-      /* ── Summary screen: single-column event cards ── */
-      .events-grid      { grid-template-columns: 1fr; gap: 8px; }
-      .event-mini       { padding: 10px 14px; }
-      .event-mini-title { font-size: 15px; }
-      .event-mini p     { font-size: 12px; }
-      /* Allow summary card to scroll if content is taller than card on very small phones */
-      #screen-all .card { overflow-y: auto; justify-content: flex-start; padding-top: 20px; }
+      /* ── Summary screen: 2×2 grid so everything fits without scrolling ── */
+      #screen-all .card           { justify-content: flex-start; padding-top: 18px; overflow-y: hidden; }
+      #screen-all .om             { font-size: 22px; margin-bottom: 4px; }
+      #screen-all .ceremony-title { font-size: 18px !important; margin-bottom: 2px; }
+      #screen-all .divider        { margin: 4px 0 !important; }
+      #screen-all .events-grid    { grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 6px; }
+      #screen-all .event-mini     { padding: 8px 10px; }
+      #screen-all .event-mini-title { font-size: 13px; margin-bottom: 3px; }
+      #screen-all .event-mini p   { font-size: 11px; line-height: 1.4; }
+      #screen-all .card > p       { font-size: 13px !important; margin-top: 2px; }
 
       /* Dots: larger hit area */
       .dot { width: 10px; height: 10px; }
