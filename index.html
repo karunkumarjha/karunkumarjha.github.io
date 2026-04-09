@@ -587,6 +587,38 @@
       100% { opacity: 0; transform: translate(var(--tx,0px), var(--ty,-120px)) scale(var(--ts,1)) rotate(var(--tr,180deg)); }
     }
 
+    /* ── SUMMARY FOOTER ──────────────────────────────────────── */
+    .summary-footer {
+      margin-top: auto;
+      padding-top: 14px;
+      text-align: center;
+      width: 100%;
+    }
+    .diya-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: clamp(10px, 2.5vw, 20px);
+      font-size: clamp(22px, 4.5vw, 32px);
+    }
+    @keyframes diyaFloat {
+      0%, 100% { transform: translateY(0);   filter: drop-shadow(0 0 4px  rgba(212,175,55,0.5)); }
+      50%       { transform: translateY(-7px); filter: drop-shadow(0 0 14px rgba(212,175,55,1.0)); }
+    }
+    .diya-row span { display: inline-block; animation: diyaFloat 2.8s ease-in-out infinite; }
+    .diya-row span:nth-child(2) { animation-delay: 0.4s; }
+    .diya-row span:nth-child(3) { animation-delay: 0.8s; }
+    .diya-row span:nth-child(4) { animation-delay: 1.2s; }
+    .diya-row span:nth-child(5) { animation-delay: 1.6s; }
+    .summary-love {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(20px, 4vw, 32px);
+      color: var(--gold-light);
+      margin-top: 8px;
+      text-shadow: 0 0 20px rgba(212,175,55,0.45);
+      text-transform: capitalize;
+    }
+
     /* ── SPLASH RINGS ─────────────────────────────────────────── */
     .splash-ring {
       position: absolute; border-radius: 50%;
@@ -656,6 +688,9 @@
       #screen-all .event-mini-title { font-size: 13px; margin-bottom: 3px; }
       #screen-all .event-mini p   { font-size: 11px; line-height: 1.4; }
       #screen-all .card > p       { font-size: 13px !important; margin-top: 2px; }
+      #screen-all .summary-footer { padding-top: 6px; }
+      #screen-all .diya-row       { font-size: 18px; gap: 10px; }
+      #screen-all .summary-love   { font-size: 16px; margin-top: 4px; }
 
       /* Dots: larger hit area */
       .dot { width: 10px; height: 10px; }
@@ -884,6 +919,13 @@
     <p style="font-size:clamp(16px,3vw,22px);color:rgba(255,248,225,0.85);font-style:italic;font-weight:600;">
       Your presence and blessings will make our celebration complete. ❤️
     </p>
+
+    <div class="summary-footer">
+      <div class="diya-row">
+        <span>🪔</span><span>🌸</span><span>🪔</span><span>🌸</span><span>🪔</span>
+      </div>
+      <p class="summary-love">With love — Karun &amp; Ashwini</p>
+    </div>
   </div>
 </section>
 
