@@ -610,15 +610,6 @@
     .diya-row span:nth-child(3) { animation-delay: 0.8s; }
     .diya-row span:nth-child(4) { animation-delay: 1.2s; }
     .diya-row span:nth-child(5) { animation-delay: 1.6s; }
-    .summary-love {
-      font-family: 'Great Vibes', cursive;
-      font-size: clamp(20px, 4vw, 32px);
-      color: var(--gold-light);
-      margin-top: 8px;
-      text-shadow: 0 0 20px rgba(212,175,55,0.45);
-      text-transform: capitalize;
-    }
-
     /* ── SPLASH RINGS ─────────────────────────────────────────── */
     .splash-ring {
       position: absolute; border-radius: 50%;
@@ -678,19 +669,18 @@
       /* Allow detail rows to wrap on very narrow phones */
       .detail-row        { flex-wrap: wrap; gap: 4px 10px; }
 
-      /* ── Summary screen: 2×2 grid so everything fits without scrolling ── */
-      #screen-all .card           { justify-content: flex-start; padding-top: 18px; overflow-y: hidden; }
-      #screen-all .om             { font-size: 22px; margin-bottom: 4px; }
-      #screen-all .ceremony-title { font-size: 18px !important; margin-bottom: 2px; }
-      #screen-all .divider        { margin: 4px 0 !important; }
-      #screen-all .events-grid    { grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 6px; }
-      #screen-all .event-mini     { padding: 8px 10px; }
-      #screen-all .event-mini-title { font-size: 13px; margin-bottom: 3px; }
-      #screen-all .event-mini p   { font-size: 11px; line-height: 1.4; }
-      #screen-all .card > p       { font-size: 13px !important; margin-top: 2px; }
-      #screen-all .summary-footer { padding-top: 6px; }
-      #screen-all .diya-row       { font-size: 18px; gap: 10px; }
-      #screen-all .summary-love   { font-size: 16px; margin-top: 4px; }
+      /* ── Summary screen: single column, everything shrunk to fit one screen ── */
+      #screen-all .card             { justify-content: flex-start; padding-top: 16px; overflow-y: hidden; }
+      #screen-all .om               { font-size: 20px; margin-bottom: 3px; }
+      #screen-all .ceremony-title   { font-size: 16px !important; margin-bottom: 2px; }
+      #screen-all .divider          { margin: 3px 0 !important; }
+      #screen-all .events-grid      { grid-template-columns: 1fr; gap: 5px; margin-top: 5px; }
+      #screen-all .event-mini       { padding: 6px 10px; }
+      #screen-all .event-mini-title { font-size: 13px; margin-bottom: 2px; }
+      #screen-all .event-mini p     { font-size: 11px; line-height: 1.35; }
+      #screen-all .card > p         { font-size: 12px !important; margin-top: 2px; }
+      #screen-all .summary-footer   { padding-top: 5px; }
+      #screen-all .diya-row         { font-size: 16px; gap: 8px; }
 
       /* Dots: larger hit area */
       .dot { width: 10px; height: 10px; }
@@ -924,7 +914,6 @@
       <div class="diya-row">
         <span>🪔</span><span>🌸</span><span>🪔</span><span>🌸</span><span>🪔</span>
       </div>
-      <p class="summary-love">With love — Karun &amp; Ashwini</p>
     </div>
   </div>
 </section>
