@@ -751,7 +751,7 @@
 </div>
 
 <!-- ── YouTube Player (hidden) ─────────────────────────── -->
-<audio id="bg-audio" src="assets/audio/music.mp3" loop preload="auto"></audio>
+<audio id="bg-audio" src="assets/audio/music.mp3" preload="auto"></audio>
 
 <!-- ── Guest Banner (hidden by default; shown only when ?guest= is set) ── -->
 <div id="guest-banner" style="display:none">
@@ -963,7 +963,7 @@
     'screen-reception',
     'screen-all',
   ];
-  const AUTO_ADVANCE_MS   = 4500;   // 4.5s display + 3.0s transition × 6 slides = 45s
+  const AUTO_ADVANCE_MS   = 8334;   // 3×8334 + 2×3000 = 31002ms ≈ 31s for first 3 slides (one music play)
   const TRANSITION_MS     = 3000;   // 3.0s — slow, cinematic crossfade
 
   let current       = 0;
@@ -1030,6 +1030,12 @@
     // Enter: new screen fades in with its unique card entry animation
     screens[current].classList.add('visible');
     dots[current].classList.add('active');
+
+    // Restart music exactly at slide 4 (index 3) so it plays once per 3 slides
+    if (current === 3) {
+      audioEl.currentTime = 0;
+      audioEl.play().catch(() => {});
+    }
 
     // Fire theme burst for event slides
     setTimeout(() => spawnThemeBurst(SCREENS[current]), 800);
