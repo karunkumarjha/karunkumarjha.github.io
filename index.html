@@ -1271,15 +1271,18 @@
     function clockSVG(h24, min) {
       const hRad = ((h24 % 12) + min / 60) * Math.PI / 6;
       const mRad = min * Math.PI / 30;
-      const hx = (10 + 4   * Math.sin(hRad)).toFixed(2);
-      const hy = (10 - 4   * Math.cos(hRad)).toFixed(2);
-      const mx = (10 + 5.5 * Math.sin(mRad)).toFixed(2);
-      const my = (10 - 5.5 * Math.cos(mRad)).toFixed(2);
-      return `<svg class="detail-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true">`
-        + `<circle cx="10" cy="10" r="8"/>`
-        + `<line x1="10" y1="10" x2="${hx}" y2="${hy}" stroke-width="1.8" stroke-linecap="round"/>`
-        + `<line x1="10" y1="10" x2="${mx}" y2="${my}" stroke-width="1.2" stroke-linecap="round"/>`
-        + `<circle cx="10" cy="10" r="1.2" fill="currentColor" stroke="none"/>`
+      const hx = (10 + 3.5 * Math.sin(hRad)).toFixed(2);
+      const hy = (10 - 3.5 * Math.cos(hRad)).toFixed(2);
+      const mx = (10 + 5   * Math.sin(mRad)).toFixed(2);
+      const my = (10 - 5   * Math.cos(mRad)).toFixed(2);
+      return `<svg class="detail-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">`
+        + `<circle cx="10" cy="10.5" r="7.5" fill="#CC2222" stroke="#AA1111" stroke-width="0.5"/>`
+        + `<circle cx="10" cy="10.5" r="6" fill="white"/>`
+        + `<circle cx="3.2" cy="5.5" r="1.8" fill="#CC2222" stroke="#AA1111" stroke-width="0.5"/>`
+        + `<circle cx="16.8" cy="5.5" r="1.8" fill="#CC2222" stroke="#AA1111" stroke-width="0.5"/>`
+        + `<line x1="10" y1="10.5" x2="${(parseFloat(hx)).toFixed(2)}" y2="${(parseFloat(hy)+0.5).toFixed(2)}" stroke="#222" stroke-width="1.6" stroke-linecap="round"/>`
+        + `<line x1="10" y1="10.5" x2="${(parseFloat(mx)).toFixed(2)}" y2="${(parseFloat(my)+0.5).toFixed(2)}" stroke="#222" stroke-width="1.1" stroke-linecap="round"/>`
+        + `<circle cx="10" cy="10.5" r="1" fill="#CC2222" stroke="none"/>`
         + `</svg>`;
     }
     document.querySelectorAll('.detail-row').forEach(row => {
