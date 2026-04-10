@@ -447,6 +447,26 @@
       stroke-dasharray: 100; stroke-dashoffset: 100;
       transition: stroke-dashoffset 0.1s linear; }
 
+    /* ── PAUSE TOAST ──────────────────────────────────────── */
+    #pause-toast {
+      position: fixed; top: 50%; left: 50%;
+      transform: translate(-50%, -50%) scale(0.85);
+      background: rgba(10, 8, 4, 0.78);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(212,175,55,0.4);
+      border-radius: 50%;
+      width: 72px; height: 72px;
+      display: flex; align-items: center; justify-content: center;
+      z-index: 1000;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+    #pause-toast.show {
+      opacity: 1; transform: translate(-50%, -50%) scale(1);
+    }
+    #pause-toast svg { width: 32px; height: 32px; }
+
     /* ── ANIMATIONS ───────────────────────────────────────── */
     @keyframes shimmer {
       0%   { background-position: -200% center; }
@@ -792,6 +812,18 @@
 <!-- ── Nav dots ────────────────────────────────────────── -->
 <div id="nav-dots"></div>
 
+<!-- ── Pause toast ──────────────────────────────────────── -->
+<div id="pause-toast">
+  <!-- icon swapped by JS between pause and play -->
+  <svg id="pause-icon" viewBox="0 0 24 24" fill="none" stroke="rgba(212,175,55,0.9)" stroke-width="2.2" stroke-linecap="round">
+    <rect x="6" y="4" width="4" height="16" rx="1" fill="rgba(212,175,55,0.9)" stroke="none"/>
+    <rect x="14" y="4" width="4" height="16" rx="1" fill="rgba(212,175,55,0.9)" stroke="none"/>
+  </svg>
+  <svg id="play-icon" viewBox="0 0 24 24" fill="none" style="display:none">
+    <polygon points="5,3 19,12 5,21" fill="rgba(212,175,55,0.9)"/>
+  </svg>
+</div>
+
 <!-- ── Floating petals ─────────────────────────────────── -->
 <div id="petals-canvas"></div>
 
@@ -1088,9 +1120,14 @@
   let audioEl       = document.getElementById('bg-audio');
   let musicPlaying  = false;
   let transitioning = false;
+  let paused        = false;
 
   const screens     = SCREENS.map(id => document.getElementById(id));
   const dotsEl      = document.getElementById('nav-dots');
+  const pauseToast  = document.getElementById('pause-toast');
+  const pauseIcon   = document.getElementById('pause-icon');
+  const playIcon    = document.getElementById('play-icon');
+  let toastTimer    = null;
 /* ── GUEST NAME ───────────────────────────────────────── */
   const params    = new URLSearchParams(window.location.search);
   const guestName = params.get('guest') || params.get('name') || '';
@@ -1170,6 +1207,7 @@
   /* ── AUTO-ADVANCE ────────────────────────────────────────── */
   function startAutoAdvance() {
     clearTimeout(timer);
+    if (paused) return;
     timer = setTimeout(() => {
       next(); // wraps back to slide 0 after the last
     }, AUTO_ADVANCE_MS);
@@ -1177,10 +1215,39 @@
 
   // startAutoAdvance() is called by dismissSplash() — not on load
 
+  /* ── PAUSE / RESUME ──────────────────────────────────────── */
+  function showToast() {
+    pauseIcon.style.display = paused ? 'none' : 'block';
+    playIcon.style.display  = paused ? 'block' : 'none';
+    pauseToast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => pauseToast.classList.remove('show'), 1200);
+  }
+
+  function togglePause() {
+    paused = !paused;
+    if (paused) {
+      clearTimeout(timer);
+    } else {
+      startAutoAdvance();
+    }
+    showToast();
+  }
+
+  /* Click anywhere on a screen (but not on interactive elements) toggles pause */
+  screens.forEach(screen => {
+    screen.addEventListener('click', e => {
+      const tag = e.target.tagName;
+      if (tag === 'A' || tag === 'BUTTON' || e.target.closest('a, button')) return;
+      togglePause();
+    });
+  });
+
   /* ── KEYBOARD NAV ─────────────────────────────────────── */
   document.addEventListener('keydown', e => {
     if (e.key === 'ArrowRight' || e.key === 'ArrowDown')  next(true);
     if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')    prev(true);
+    if (e.key === ' ' || e.key === 'k') { e.preventDefault(); togglePause(); }
   });
 
   /* ── TOUCH / SWIPE ────────────────────────────────────── */
