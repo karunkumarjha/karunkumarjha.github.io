@@ -77,6 +77,27 @@
       max-width: 420px;
       animation: fadeIn 1s ease both;
     }
+    #splash-shri-ganesh {
+      font-size: clamp(16px, 4vw, 22px);
+      color: var(--gold);
+      letter-spacing: 0;
+      margin-bottom: 10px;
+      text-shadow: 0 0 18px rgba(212,175,55,0.6);
+    }
+    #splash-couple {
+      width: clamp(180px, 48vw, 260px);
+      height: clamp(180px, 48vw, 260px);
+      object-fit: cover;
+      object-position: center 15%;
+      border-radius: 50%;
+      border: 3px solid rgba(212,175,55,0.7);
+      box-shadow: 0 0 32px rgba(212,175,55,0.4);
+      margin-bottom: 16px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      animation: floatPetal 3s ease-in-out infinite;
+    }
     #splash-rings {
       font-size: clamp(40px, 10vw, 64px);
       margin-bottom: 20px;
@@ -92,11 +113,13 @@
     }
     #splash-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(38px, 8vw, 62px);
+      font-size: clamp(20px, 5vw, 32px);
       color: var(--gold);
       font-weight: 600;
-      margin: 0 0 14px;
-      letter-spacing: 0.03em;
+      margin: 0 0 12px;
+      letter-spacing: 0.02em;
+      line-height: 1.5;
+      font-style: italic;
     }
     #splash-sub {
       font-family: 'Cormorant Garamond', serif;
@@ -121,6 +144,19 @@
     #splash-btn:hover {
       transform: scale(1.06);
       box-shadow: 0 6px 32px rgba(212,175,55,0.65);
+    }
+    @keyframes btnPulse {
+      0%,100% { transform: scale(1);    box-shadow: 0 4px 24px rgba(212,175,55,0.45); }
+      50%     { transform: scale(1.06); box-shadow: 0 6px 36px rgba(212,175,55,0.8); }
+    }
+    @keyframes btnNudge {
+      0%,100% { transform: translateY(0); }
+      60%     { transform: translateY(-5px); }
+      75%     { transform: translateY(-2px); }
+      90%     { transform: translateY(-4px); }
+    }
+    #splash-btn {
+      animation: btnPulse 2s ease-in-out infinite, btnNudge 3s ease-in-out infinite;
     }
     #splash-note {
       margin-top: 20px;
@@ -586,7 +622,7 @@
       50%       { transform: translateY(-9px) scale(1.07); filter: drop-shadow(0 0 28px rgba(212,175,55,1.0));  }
     }
     .ceremony-icon { animation: iconFloat 3.2s ease-in-out infinite !important; }
-    @keyframes havanFloat {
+@keyframes havanFloat {
       0%, 100% { transform: translateY(0)   scale(1);    filter: drop-shadow(0 0 14px #FF6B00) drop-shadow(0 -4px 18px #FFD700); }
       50%       { transform: translateY(-9px) scale(1.07); filter: drop-shadow(0 0 26px #FF4500) drop-shadow(0 -8px 28px #FFAA00); }
     }
@@ -596,6 +632,35 @@
     }
     .havan-svg { animation: havanFloat 3.2s ease-in-out infinite !important; }
     .haldi-svg { animation: haldiFloat 3.2s ease-in-out infinite !important; }
+    /* ── GANPATI IMAGE ──────────────────────────────────────── */
+    .ganpati-svg {
+      width: clamp(100px,20vw,148px); height: clamp(100px,20vw,148px);
+      display: block; margin: 0 auto 6px;
+      object-fit: cover; border-radius: 14px;
+      box-shadow: 0 0 28px rgba(0,0,0,0.5);
+    }
+    /* Per-screen: hue-rotate shifts the red bg to match the theme;
+       white Ganpati silhouette is unaffected by hue-rotate */
+    @keyframes ganpatiGlowHaldi {
+      0%,100%{transform:scale(1);   filter:hue-rotate(28deg) saturate(1.2) drop-shadow(0 0 12px rgba(255,200,60,0.6))}
+      50%    {transform:scale(1.07);filter:hue-rotate(28deg) saturate(1.2) drop-shadow(0 0 28px rgba(255,200,60,1))}
+    }
+    @keyframes ganpatiGlowSangeet {
+      0%,100%{transform:scale(1);   filter:hue-rotate(272deg) saturate(1.4) drop-shadow(0 0 12px rgba(206,147,216,0.6))}
+      50%    {transform:scale(1.07);filter:hue-rotate(272deg) saturate(1.4) drop-shadow(0 0 28px rgba(206,147,216,1))}
+    }
+    @keyframes ganpatiGlowVivaah {
+      0%,100%{transform:scale(1);   filter:hue-rotate(0deg) saturate(1.1) drop-shadow(0 0 12px rgba(255,180,50,0.6))}
+      50%    {transform:scale(1.07);filter:hue-rotate(0deg) saturate(1.1) drop-shadow(0 0 28px rgba(255,215,0,1))}
+    }
+    @keyframes ganpatiGlowReception {
+      0%,100%{transform:scale(1);   filter:hue-rotate(214deg) saturate(1.3) drop-shadow(0 0 12px rgba(100,181,246,0.6))}
+      50%    {transform:scale(1.07);filter:hue-rotate(214deg) saturate(1.3) drop-shadow(0 0 28px rgba(100,181,246,1))}
+    }
+    #screen-haldi     .ganpati-svg { animation: ganpatiGlowHaldi     4s ease-in-out infinite !important; }
+    #screen-sangeet   .ganpati-svg { animation: ganpatiGlowSangeet   4s ease-in-out infinite !important; }
+    #screen-vivaah    .ganpati-svg { animation: ganpatiGlowVivaah    4s ease-in-out infinite !important; }
+    #screen-reception .ganpati-svg { animation: ganpatiGlowReception 4s ease-in-out infinite !important; }
 
     /* ── OM PULSE ─────────────────────────────────────────────── */
     @keyframes omPulse {
@@ -675,6 +740,7 @@
       color: rgba(255,248,225,0.55);
       letter-spacing: 0.06em;
       margin-top: 4px;
+      margin-bottom: 14px;
     }
 
     /* ── SPLASH RINGS ─────────────────────────────────────────── */
@@ -784,11 +850,11 @@
   <div class="splash-ring" style="width:480px;height:480px;animation-duration:9s;animation-delay:1.6s;"></div>
   <div class="splash-ring" style="width:640px;height:640px;animation-duration:12s;animation-delay:2.4s;border-style:dashed;"></div>
   <div id="splash-inner">
-    <div id="splash-rings">💍</div>
+    <div id="splash-shri-ganesh">श्री गणेश</div>
+    <img id="splash-couple" src="assets/images/couple-illustration.jpg" alt="Karun &amp; Ashwini"/>
     <p id="splash-guest"></p>
-    <h1 id="splash-title">Psst… you're invited.</h1>
-    <p id="splash-sub">But first — your ears need to RSVP too.<br/>Unmute your soul and step inside.</p>
-    <button id="splash-btn" aria-label="Open the wedding invitation">Open the invitation ✨</button>
+    <h1 id="splash-title">Please grace us with your presence on our special day.</h1>
+<button id="splash-btn" aria-label="Open the wedding invitation">Open Invitation 💍</button>
     <p id="splash-note">🔊 Best experienced with sound on</p>
   </div>
 </div>
@@ -855,11 +921,11 @@
     </div>
 
     <div class="welcome-footer">
+      <p class="welcome-dates">30 June &amp; 1 July 2026</p>
+      <p class="welcome-venue">KANPUR</p>
       <div class="flower-row">
         <span>🌸</span><span>🪷</span><span>🌸</span><span>🪷</span><span>🌸</span>
       </div>
-      <p class="welcome-dates">30 June &amp; 1 July 2026</p>
-      <p class="welcome-venue">KANPUR</p>
     </div>
 
   </div>
@@ -872,41 +938,7 @@
   <div class="theme-canvas" id="tc-haldi"></div>
   <div class="card">
     <div class="corner-tr"></div><div class="corner-bl"></div>
-    <svg class="haldi-svg" viewBox="0 0 80 80" fill="none" aria-label="Overflowing haldi pot">
-      <!-- Always-visible turmeric overflow streams down both sides -->
-      <path d="M27,37 C22,45 20,54 19,63" stroke="#F5B800" stroke-width="5.5" stroke-linecap="round" fill="none"/>
-      <path d="M53,37 C58,45 60,54 61,63" stroke="#F5B800" stroke-width="5.5" stroke-linecap="round" fill="none"/>
-      <!-- Animated drip drops falling off stream ends -->
-      <ellipse class="haldi-drip-1" cx="19" cy="68" rx="4" ry="5.5" fill="#F5B800"/>
-      <ellipse class="haldi-drip-2" cx="61" cy="68" rx="4" ry="5.5" fill="#F5B800"/>
-      <!-- Pot belly (round matka shape) -->
-      <path d="M17,52 C17,69 29,77 40,77 C51,77 63,69 63,52 C63,40 52,34 40,34 C28,34 17,40 17,52Z" fill="#C17A35"/>
-      <path d="M19,52 C19,67 30,75 40,75 C50,75 61,67 61,52 C61,42 51,36 40,36 C29,36 19,42 19,52Z" fill="#D4893E"/>
-      <!-- Neck -->
-      <rect x="31" y="24" width="18" height="13" rx="2" fill="#C17A35"/>
-      <rect x="32" y="25" width="16" height="11" rx="2" fill="#CB8540"/>
-      <!-- Rim (raised lip) -->
-      <rect x="26" y="21" width="28" height="6" rx="3" fill="#A06530"/>
-      <rect x="27" y="22" width="26" height="4" rx="2" fill="#BE7A3C"/>
-      <!-- Turmeric paste mound overflowing above rim — bold & obvious -->
-      <ellipse cx="40" cy="20" rx="19" ry="7.5" fill="#F5B800"/>
-      <ellipse cx="40" cy="18" rx="17" ry="6" fill="#FFD000"/>
-      <ellipse cx="40" cy="16" rx="14" ry="5" fill="#FFE040"/>
-      <ellipse cx="38" cy="14" rx="9" ry="3.5" fill="#FFF080" opacity="0.75"/>
-      <!-- Overflow blobs connecting mound to side streams -->
-      <path d="M27,23 C22,28 20,35 20,40 C24,38 26,34 27,29 C27,27 27,24 27,23Z" fill="#F5B800"/>
-      <path d="M53,23 C58,28 60,35 60,40 C56,38 54,34 53,29 C53,27 53,24 53,23Z" fill="#F5B800"/>
-      <!-- Ethnic decoration on belly -->
-      <path d="M19,50 C29,46 51,46 61,50" stroke="#A86020" stroke-width="1.3" fill="none"/>
-      <path d="M18,58 C28,54 52,54 62,58" stroke="#A86020" stroke-width="1.3" fill="none"/>
-      <circle cx="30" cy="65" r="2" fill="#8A4E18" opacity="0.65"/>
-      <circle cx="40" cy="67" r="2" fill="#8A4E18" opacity="0.65"/>
-      <circle cx="50" cy="65" r="2" fill="#8A4E18" opacity="0.65"/>
-      <!-- Turmeric root pieces (rhizomes) on sides -->
-      <rect x="5" y="56" width="10" height="6" rx="3" fill="#D49500" transform="rotate(-25,10,59)"/>
-      <rect x="65" y="54" width="10" height="6" rx="3" fill="#D49500" transform="rotate(20,70,57)"/>
-      <rect x="7" y="45" width="8" height="5" rx="2.5" fill="#C08500" transform="rotate(-10,11,47)"/>
-    </svg>
+    <div class="ceremony-icon">🌼</div>
     <div class="ceremony-title">Haldi</div>
     <div class="ceremony-subtitle">The Sacred Turmeric Ceremony</div>
     <div class="divider"></div>
@@ -952,61 +984,7 @@
   <div class="theme-canvas" id="tc-vivaah"></div>
   <div class="card">
     <div class="corner-tr"></div><div class="corner-bl"></div>
-    <svg class="havan-svg" viewBox="0 0 80 80" fill="none" aria-label="Havan Kund with sacred fire">
-      <!-- Tall back flame — deep red, behind all others -->
-      <g class="havan-fire-1">
-        <path d="M34,50 C31,40 34,24 40,11 C46,24 49,40 46,50Z" fill="#AA2200" opacity="0.75"/>
-      </g>
-      <!-- Left-leaning flame -->
-      <g class="havan-fire-2">
-        <path d="M30,50 C26,41 27,29 32,19 C35,26 36,38 32,50Z" fill="#FF5500" opacity="0.9"/>
-      </g>
-      <!-- Right-leaning flame (same flicker, offset visually) -->
-      <g class="havan-fire-2" style="animation-delay:0.35s">
-        <path d="M50,50 C54,38 45,26 48,19 C53,29 54,41 50,50Z" fill="#FF5500" opacity="0.9"/>
-      </g>
-      <!-- Main centre flame — orange, single sharp tip -->
-      <g class="havan-fire-3">
-        <path d="M35,50 C32,42 35,28 40,16 C45,28 48,42 45,50Z" fill="#FF8000"/>
-      </g>
-      <!-- Inner yellow flame — brighter, narrower -->
-      <g class="havan-fire-1" style="animation-delay:0.2s">
-        <path d="M37,50 C35,43 37,31 40,21 C43,31 45,43 43,50Z" fill="#FFD700"/>
-      </g>
-      <!-- Bright white-yellow core -->
-      <g class="havan-fire-3" style="animation-delay:0.1s">
-        <path d="M38,50 C37,44 38,36 40,28 C42,36 43,44 42,50Z" fill="#FFF5A0"/>
-      </g>
-      <!-- Ember / coal glow at fire base -->
-      <ellipse cx="40" cy="50" rx="14" ry="3.5" fill="#FF5500" opacity="0.5"/>
-      <ellipse cx="40" cy="50" rx="7" ry="2" fill="#FFCC00" opacity="0.65"/>
-      <!-- ── KUND BODY — 3 stepped tiers (traditional square havan kund) ── -->
-      <!-- Tier 1: fire ring (top, narrowest) -->
-      <rect x="23" y="50" width="34" height="6" rx="0.5" fill="#8B3A10"/>
-      <rect x="24" y="51" width="32" height="5" rx="0.5" fill="#9B4520"/>
-      <!-- Tier 2: middle step -->
-      <rect x="17" y="56" width="46" height="7" rx="0.5" fill="#8B4513"/>
-      <!-- Tier 3: base (widest) -->
-      <rect x="11" y="63" width="58" height="8" rx="0.5" fill="#7B3210"/>
-      <!-- ── ETHNIC GEOMETRIC DECORATION ── -->
-      <!-- Divider line on tier 1 -->
-      <line x1="23" y1="53" x2="57" y2="53" stroke="#D4804A" stroke-width="0.8" opacity="0.8"/>
-      <!-- Divider line on tier 2 -->
-      <line x1="17" y1="59.5" x2="63" y2="59.5" stroke="#C07040" stroke-width="0.7" opacity="0.75"/>
-      <!-- Triangle motifs on tier 2 (upward-pointing = agni symbol) -->
-      <path d="M21,63 L25,56 L29,63Z" fill="#BF6030" opacity="0.6"/>
-      <path d="M33,63 L37,56 L41,63Z" fill="#BF6030" opacity="0.6"/>
-      <path d="M45,63 L49,56 L53,63Z" fill="#BF6030" opacity="0.6"/>
-      <!-- Dot row on base tier -->
-      <circle cx="17" cy="67" r="1.2" fill="#D4804A" opacity="0.65"/>
-      <circle cx="25" cy="67" r="1.2" fill="#D4804A" opacity="0.65"/>
-      <circle cx="33" cy="67" r="1.2" fill="#D4804A" opacity="0.65"/>
-      <circle cx="41" cy="67" r="1.2" fill="#D4804A" opacity="0.65"/>
-      <circle cx="49" cy="67" r="1.2" fill="#D4804A" opacity="0.65"/>
-      <circle cx="57" cy="67" r="1.2" fill="#D4804A" opacity="0.65"/>
-      <!-- Bottom border line -->
-      <line x1="11" y1="66" x2="69" y2="66" stroke="#C07040" stroke-width="0.7" opacity="0.7"/>
-    </svg>
+    <div class="ceremony-icon">🪔</div>
     <div class="ceremony-title">Vivaah</div>
     <div class="ceremony-subtitle">The Sacred Wedding Ceremony</div>
     <div class="divider"></div>
